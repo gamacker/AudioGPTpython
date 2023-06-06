@@ -80,6 +80,8 @@ while keepGoing:
                         json.dump(prevConversation, file)
                     prevConversation = ""
                     print("Context saved as " + filename)
+                    engine.say("Context saved as " + filename)
+                    engine.runAndWait()
                     continue
                 elif text.lower().startswith("open context ") or text.lower().startswith("open contacts "):
                     filename = text[13:] + '.json'
@@ -87,10 +89,24 @@ while keepGoing:
                         with open(filename, 'r') as file:
                             prevConversation = json.load(file)
                         print("Context loaded from " + filename)
+                        engine.say("Context loaded from " + filename)
+                        engine.runAndWait()
                     except FileNotFoundError:
                         print("No such file: " + filename)
+                        engine.say("No such file: " + filename)
+                        engine.runAndWait()
                     continue
+                elif text.lower().startswith("list context") or text.lower().startswith("list contacts"):
+                    files = [f for f in os.listdir() if f.endswith('.json')]
+                    for i in range(len(files)):
+                        files[i] = files[i][:-5]
+                    fileNames = ', '.join(files)
+                    print("JSON files: " + fileNames)
 
+                    engine.say(fileNames)
+                    engine.runAndWait()
+
+                    continue
 
                 print("AI: " + chat_with_gpt(text))
 
