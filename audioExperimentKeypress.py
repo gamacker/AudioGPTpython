@@ -67,8 +67,6 @@ while keepGoing:
                 text = r.recognize_google(audio_data)
                 print("You said: " + text)
 
-                import json
-
                 # ... other parts of your code ...
 
                 if text.lower() == "goodbye":
