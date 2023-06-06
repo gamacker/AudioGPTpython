@@ -3,5 +3,4 @@ pyaudio
 pyttsx3
 openai
 python-dotenv
-espeak
-
+keyboard
