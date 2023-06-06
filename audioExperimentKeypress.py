@@ -74,7 +74,7 @@ while keepGoing:
                 if text.lower() == "goodbye":
                     keepGoing = False
                     break
-                elif text.lower().startswith("save context ") or text.lower().startswith("save contacts "):
+                elif text.lower().startswith("save context ") or text.lower().startswith("save contacts ") or text.lower().startswith("dave context ") or text.lower().startswith("dave contacts "):
                     filename = text[13:] + '.json'
                     with open(filename, 'w') as file:
                         json.dump(prevConversation, file)
