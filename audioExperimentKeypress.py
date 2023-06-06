@@ -94,7 +94,6 @@ while keepGoing:
 
                 print("AI: " + chat_with_gpt(text))
 
-                
 
             except sr.WaitTimeoutError:
                 print("Silence detected, recording stopped.")
